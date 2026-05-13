@@ -2,7 +2,7 @@
 
 Proyecto educativo que demuestra la implementación de diversos algoritmos fundamentales de ordenamiento interno y búsqueda en C++. Este proyecto es ideal para estudiantes que deseen comprender cómo funcionan estos algoritmos a nivel de implementación.
 
-## ?? Descripción del Proyecto
+## Descripción del Proyecto
 
 Este proyecto implementa algoritmos clásicos organizados en tres categorías principales:
 
@@ -72,7 +72,7 @@ Métodos para encontrar elementos específicos en colecciones de datos.
   - Uso: Mantenimiento dinámico de conjuntos ordenados, búsquedas recurrentes
   - Archivo: `Busqueda.h`
 
-## ??? Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 OrdenamientoYBusqueda/
@@ -86,7 +86,7 @@ OrdenamientoYBusqueda/
 ??? README.md                       # Este archivo
 ```
 
-## ?? Características Principales
+## Características Principales
 
 - **Plantillas genéricas**: Los algoritmos utilizan templates para trabajar con cualquier tipo de dato comparable
 - **Interfaz interactiva**: Menú de usuario para seleccionar qué algoritmos demostrar
@@ -94,7 +94,7 @@ OrdenamientoYBusqueda/
 - **Ejemplos claros**: Demostración paso a paso de cada algoritmo
 - **Documentación completa**: Comentarios extensos explicando cada algoritmo
 
-## ?? Tabla Comparativa de Complejidad
+## Tabla Comparativa de Complejidad
 
 | Algoritmo | Mejor Caso | Caso Promedio | Peor Caso | Espacio |
 |-----------|-----------|---------------|-----------|---------|
@@ -108,14 +108,14 @@ OrdenamientoYBusqueda/
 | Búsqueda Binaria | O(1) | O(log n) | O(log n) | O(1) |
 | Árbol de Búsqueda | O(log n) | O(log n) | O(n) | O(n) |
 
-## ?? Requisitos del Sistema
+## Requisitos del Sistema
 
 - **Compilador**: C++ 14 o superior
 - **Entorno**: Visual Studio 2015+ (también compatible con otros compiladores)
 - **SO**: Windows, Linux, macOS
 - **RAM**: Mínimo 512 MB
 
-## ?? Compilación y Ejecución
+## Compilación y Ejecución
 
 ### Visual Studio (Windows)
 1. Abrir `OrdenamientoYBusqueda.sln`
@@ -134,7 +134,7 @@ clang++ -std=c++14 -o ordenamiento OrdenamientoYBusqueda.cpp
 ./ordenamiento
 ```
 
-## ?? Guía de Uso
+## Guía de Uso
 
 Al ejecutar el programa, se mostrará un menú interactivo:
 
@@ -166,7 +166,7 @@ Cada demostración muestra:
 - Array antes y después de la operación
 - Estadísticas adicionales (para ordenamiento)
 
-## ?? Concepto Educativo
+## Concepto Educativo
 
 Este proyecto está diseñado para:
 
@@ -183,7 +183,7 @@ Este proyecto está diseñado para:
 - Lea el código fuente para entender la implementación
 - Agregue sus propios algoritmos siguiendo la misma estructura
 
-## ?? Explicación de Conceptos Clave
+## Explicación de Conceptos Clave
 
 ### Complejidad Temporal
 Mide cuántas operaciones básicas realiza un algoritmo en función del tamaño de entrada (n):
@@ -202,14 +202,14 @@ Estrategia donde se divide el problema en subproblemas más pequeños (Quick Sort,
 ### Estructura de Heap
 Árbol binario completo donde cada padre es mayor que sus hijos (max-heap).
 
-## ?? Debugging y Depuración
+## Debugging y Depuración
 
 El código incluye funciones de utilidad para análisis:
 - `ImprimirArray()`: Visualizar el contenido del array
 - `EstaOrdenado()`: Verificar si el array está correctamente ordenado
 - Contadores de operaciones para análisis de rendimiento
 
-## ?? Ejemplo de Uso
+## Ejemplo de Uso
 
 ```cpp
 // Ordenamiento
@@ -230,29 +230,29 @@ if (arbol.Buscar(30)) {
 }
 ```
 
-## ?? Recursos Adicionales
+## Recursos Adicionales
 
 Para profundizar en estos temas, se recomienda:
 - **"Introduction to Algorithms"** de Cormen, Leiserson, Rivest y Stein
 - **"The Algorithm Design Manual"** de Steven Skiena
 - Plataformas como LeetCode, HackerRank para practicar
 
-## ?? Notas Importantes
+## Notas Importantes
 
 - Este proyecto implementa **ordenamiento interno** (en memoria)
 - **No incluye** transformación de claves (hashing)
 - Todos los algoritmos son **comparativos** (basados en comparación de elementos)
 - Los templates permiten usar cualquier tipo de dato con operador `<`, `>`, `==`
 
-## ????? Autor
+## Autor
 
-Proyecto educativo de demostración de algoritmos fundamentales en C++.
+Manuel Balderas - Proyecto educativo de demostración de algoritmos fundamentales en C++.
 
-## ?? Licencia
+## Licencia
 
 Este proyecto es de uso educativo. Siéntase libre de modificarlo y adaptarlo a sus necesidades.
 
-## ?? Contribuciones
+## Contribuciones
 
 Si desea mejorar este proyecto, puede:
 - Agregar más algoritmos (Merge Sort, Counting Sort, etc.)
