@@ -125,6 +125,19 @@
   <ItemGroup>
     <ClCompile Include="OrdenamientoYBusqueda.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Busqueda.h" />
+    <ClInclude Include="OrdenamientoDirecto.h" />
+    <ClInclude Include="OrdenamientoLogaritmico.h" />
+    <ClInclude Include="Utilidades.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CHEATSHEET.txt" />
+    <Text Include="EjemplosAvanzados.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

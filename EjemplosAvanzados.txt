@@ -1,0 +1,259 @@
+// Ejemplos Avanzados y Notas Educativas
+// Este archivo contiene ejemplos y explicaciones adicionales
+
+/*
+GUIA DE APRENDIZAJE - ALGORITMOS DE ORDENAMIENTO Y BUSQUEDA
+============================================================
+
+1. ALGORITMOS DE ORDENAMIENTO DIRECTO
+=====================================
+
+Bubble Sort (Ordenamiento de Burbuja):
+- El nombre viene de como los elementos "flotan" hacia su posición correcta
+- En la primera pasada, el elemento más grande burbujea al final
+- Tiene optimizaciones: pode el ciclo si no hay intercambios
+- Mejor para: datos pequeños, enseñanza, datos casi ordenados
+
+    Ejemplo paso a paso con [5, 2, 8, 1]:
+    Pasada 1: [2, 5, 1, 8] - el 8 se mueve al final
+    Pasada 2: [2, 1, 5, 8] - el 5 se coloca
+    Pasada 3: [1, 2, 5, 8] - completado
+
+Insertion Sort (Ordenamiento por Inserción):
+- Construye el array ordenado inserta elemento por elemento
+- Como organizar cartas en tu mano
+- Excelente para datos parcialmente ordenados
+- Complejidad O(n) si está casi ordenado
+
+    Ejemplo paso a paso con [5, 2, 8, 1]:
+    Inicio: [5] | [2, 8, 1]
+    Insertar 2: [2, 5] | [8, 1]
+    Insertar 8: [2, 5, 8] | [1]
+    Insertar 1: [1, 2, 5, 8]
+
+Selection Sort (Ordenamiento por Selección):
+- Selecciona el elemento menor y lo coloca al principio
+- Número mínimo de intercambios (máximo n-1)
+- No es adaptativo (misma complejidad siempre)
+
+    Ejemplo paso a paso con [5, 2, 8, 1]:
+    Encuentra 1: [1, 2, 8, 5]
+    Encuentra 2: [1, 2, 8, 5]
+    Encuentra 5: [1, 2, 5, 8]
+
+
+2. ALGORITMOS DE ORDENAMIENTO LOGARITMICO
+==========================================
+
+Shell Sort (Ordenamiento Shell):
+- Generalización de Insertion Sort
+- Usa incrementos (gaps) que disminuyen
+- Incrementos comunes: n/2, n/4, ..., 1
+- No es estable pero es eficiente
+
+    Ejemplo con gap=2:
+    [5, 2, 8, 1, 9, 3] -> [2, 1, 3, 5, 9, 8]
+    Luego gap=1 (insertion sort en casi ordenado)
+    Resultado: [1, 2, 3, 5, 8, 9]
+
+Quick Sort (Ordenamiento Rápido):
+- Divide y Conquista: elige pivote, particiona, recursión
+- Promedio O(n log n), peor O(n²) si pivote es mal elegido
+- In-place y generalmente más rápido que Merge Sort
+- Estrategia: elegir pivote aleatorio o mediana de tres
+
+    Ejemplo con pivote=5:
+    [5, 2, 8, 1, 9, 3]
+    Menores: [2, 1, 3] | Pivote: [5] | Mayores: [8, 9]
+    [1, 2, 3, 5, 8, 9] (después recursión y combine)
+
+Heap Sort (Ordenamiento por Montículo):
+- Utiliza estructura Heap (Árbol binario completo)
+- Garantiza O(n log n) en todos los casos
+- Menos eficiente en caché que Quick Sort
+- Útil cuando necesitas garantía de rendimiento
+
+    Pasos:
+    1. Construir max-heap
+    2. Intercambiar raíz con último
+    3. Re-heapify
+    4. Repetir
+
+
+3. ALGORITMOS DE BUSQUEDA
+=========================
+
+Búsqueda Secuencial:
+- Más simple: verifica cada elemento
+- Sin requisitos (array puede estar desordenado)
+- Mejor caso: O(1) si el elemento está al principio
+- Peor caso: O(n) si está al final o no existe
+
+    Búsqueda de 8 en [5, 2, 8, 1]:
+    ¿5 == 8? No
+    ¿2 == 8? No
+    ¿8 == 8? Sí, posición 2
+
+Búsqueda Binaria:
+- Divide y conquista en array ordenado
+- Cada comparación elimina la mitad del espacio
+- Para 1 millón: máximo 20 comparaciones vs 500000 secuencial
+- REQUIERE array ordenado
+
+    Búsqueda de 8 en [1, 2, 5, 8]:
+    mid=2 (valor 5), 8>5, buscar en derecha
+    mid=3 (valor 8), ¡encontrado!
+
+Árbol de Búsqueda Binaria (ABB):
+- Estructura dinámica para búsquedas eficientes
+- Propiedad: izquierda < padre < derecha
+- Búsqueda, inserción, eliminación O(log n) promedio
+- Degenera a O(n) si está desbalanceado (usar AVL/RB-tree)
+
+    Insertar [50, 30, 70, 20, 40, 60, 80]:
+           50
+          /  \
+        30    70
+       / \    / \
+      20 40  60 80
+
+
+4. COMPARACION PRACTICA
+=======================
+
+Tamaño    | Bubble/Insertion | Shell    | Quick    | Heap
+========================================================
+100       | <1 ms            | <1 ms    | <1 ms    | <1 ms
+1,000     | 1-10 ms          | <1 ms    | <1 ms    | <1 ms
+10,000    | 100-1000 ms      | 1-5 ms   | 1-5 ms   | 5-10 ms
+100,000   | 10-100 s         | 10-50ms  | 10-50ms  | 50-100ms
+1,000,000 | 10-100 min       | 100-500ms| 100-500ms| 500ms-2s
+
+5. CUANDO USAR CADA UNO
+=======================
+
+Usa Bubble Sort:
+? Aprendizaje educativo
+? Arrays muy pequeños (<10 elementos)
+? Datos casi ordenados
+? Cuando necesites estabilidad y simplicidad
+
+Usa Insertion Sort:
+? Arrays pequeños o parcialmente ordenados
+? Inserción en tiempo real (online sorting)
+? Datos con poca cantidad de desorden
+? Ordenamiento adaptativo
+
+Usa Selection Sort:
+? Cuando necesitas minimizar intercambios
+? Memoria limitada para copia de elementos
+? Propósitos educativos
+
+Usa Shell Sort:
+? Mejor que directos, más simple que Quick/Heap
+? Datos de tamaño medio
+? Cuando no quieres overhead de recursión
+
+Usa Quick Sort:
+? Propósito general (uso de std::sort)
+? Rendimiento promedio excelente
+? In-place y eficiente en caché
+? NO cuando necesitas garantía peor caso
+
+Usa Heap Sort:
+? Necesitas garantía O(n log n)
+? No quieres recursión (sin stack overflow)
+? Memoria limitada
+? Sistemas en tiempo real
+
+Usa Búsqueda Secuencial:
+? Arrays desordenados
+? Datos muy pequeños
+? O necesitas datos no comparables
+
+Usa Búsqueda Binaria:
+? Array ordenado y estático
+? Búsquedas frecuentes
+? Necesitas O(log n)
+
+Usa Árbol de Búsqueda:
+? Inserciones/eliminaciones frecuentes
+? Necesitas mantener datos dinámicamente ordenados
+? Iteración en orden es necesaria
+? Rango de búsquedas
+
+
+6. OPTIMIZACIONES PRACTICAS
+============================
+
+Bubble Sort optimizado:
+- Detener si no hay intercambios (early exit)
+- Reducir el rango de búsqueda cada pasada
+
+Quick Sort optimizado:
+- Usar mediana de tres para elegir pivote
+- Cambiar a Insertion Sort para pequeños subarrays
+- Usar partición de 3 vías para duplicados
+
+Búsqueda Binaria:
+- Usar búsqueda exponencial primero si tamaño desconocido
+- Buscar rango de valores (búsqueda de límite inferior/superior)
+
+
+7. COMPLEJIDAD DE ESPACIO
+=========================
+
+In-place algorithms (O(1) espacio extra):
+- Bubble Sort, Selection Sort, Insertion Sort, Shell Sort, Heap Sort
+
+Algorithms con O(log n) espacio:
+- Quick Sort (por stack de recursión)
+
+Algorithms con O(n) espacio:
+- Árbol de Búsqueda (almacena todos los elementos en el árbol)
+
+
+8. ESTABILIDAD
+==============
+
+Estables (mantienen orden relativo de iguales):
+- Bubble Sort, Insertion Sort, Merge Sort
+
+No estables:
+- Selection Sort, Shell Sort, Heap Sort, Quick Sort
+
+Ejemplo de estabilidad:
+Array con pares (valor, id): [(5,a), (2,b), (5,c), (1,d)]
+Estable: [(1,d), (2,b), (5,a), (5,c)] - se mantiene orden a, c
+No estable: [(1,d), (2,b), (5,c), (5,a)] - podría cambiar orden
+
+*/
+
+// EJEMPLO: Cómo escribir un algoritmo similar
+
+template<typename T>
+void MiAlgoritmo(T arr[], int n)
+{
+    // 1. Documentar complejidad
+    // 2. Manejar casos especiales (n <= 1)
+    // 3. Usar operadores genéricos (<, >, ==)
+    // 4. Mantener código limpio y legible
+
+    if (n <= 1) return; // Ya está ordenado
+
+    // Tu lógica aquí
+}
+
+// EJERCICIOS SUGERIDOS:
+/*
+1. Implementar Merge Sort
+2. Implementar Counting Sort (números específicos)
+3. Implementar Radix Sort (números específicos)
+4. Optimizar Quick Sort con mediana de tres
+5. Implementar búsqueda con interpolación
+6. Implementar ABB con eliminación
+7. Implementar AVL Tree (árbol balanceado)
+8. Agregar análisis de rendimiento
+9. Visualizar los algoritmos paso a paso
+10. Comparar rendimiento experimental vs teórico
+*/
